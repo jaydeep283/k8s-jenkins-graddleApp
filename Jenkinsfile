@@ -6,11 +6,15 @@ pipeline {
     }
     stages {
         stage('Checkout code') {
-            git 'https://github.com/jaydeep283/k8s-jenkins-graddleApp.git'
+          steps{
+              git 'https://github.com/jaydeep283/k8s-jenkins-graddleApp.git'
+          }
         }
 
         stage('Graddle Build') {
-             sh './gradlew build'
+          steps{
+              sh './gradlew build'
+          }
         }
 
         stage('Build image') {
@@ -33,7 +37,7 @@ pipeline {
             }
           }
         }
-        
+
         stage('Deploying App to Kubernetes') {
           steps {
             script {
